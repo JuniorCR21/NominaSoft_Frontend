@@ -1,0 +1,149 @@
+div{
+  margin: 0;
+  padding: 0;
+}
+
+.banner-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background: linear-gradient(to bottom, rgba(17, 23, 33, 0.6),rgba(17, 23, 33, 0.6)) , url('../../../assets/login/banner-login.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+
+.banner-login img{
+  width: 650px;
+}
+
+.content-login{
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95),rgba(255, 255, 255, 0.95)) ,url('../../../assets/login/fondo.jpg');
+}
+
+.content-login .title{
+  font-weight: 700;
+  color: #052C65;
+  position: absolute;
+  top: 10%;
+  left: 67%;
+}
+
+.content-login__form{
+  width: 50%;
+}
+
+.content-login__form .icon{
+  font-size: 80px;
+}
+
+.text-login{
+  font-size: 12px;
+  color: #a0a0a0;
+  position: absolute;
+  bottom: 10%;
+  right: 8%;
+  text-align: right;
+}
+
+.btn-primary{
+  background-color: #0160ff;
+  transition: all .3s ease-in-out;
+}
+
+.btn-primary:hover{
+  background-color: #0052df;
+}
+
+@media screen and (min-width: 768px) and (max-width:1024px) {
+  .banner-login{
+    width: 50%;
+    background-position-x: 42%;
+  }
+  .content-login{
+    width: 50%;
+  }
+
+  .content-login__form{
+    width: 70%;
+  }
+
+  .banner-login img{
+    width: 500px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width:900px) {
+
+  .row{
+    display: block;
+  }
+  .banner-login{
+    width: 100%;
+    height: 35vh;
+  }
+  .content-login{
+    width: 100%;
+    height: 64vh;
+  }
+  .content-login__form{
+    width: 50%;
+  }
+
+  .banner-login img{
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .row{
+    display: block;
+  }
+  .banner-login{
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    z-index: 10;
+  }
+  .content-login{
+    width: 100%;
+    height: 70vh;
+  }
+  .content-login__form{
+    position: absolute;
+    background-color: #fff;
+    top: 26vh;
+    width: 100%;
+    padding: 10% 15%;
+    border-radius: 20px;
+    z-index: 20;
+
+    animation: .4s animationForm ease-in-out;
+  }
+
+  @keyframes animationForm {
+    0%{
+      top: 0;
+    }
+    100%{
+      top: 26vh;
+    }
+  }
+
+  .banner-login img{
+    width: 220px;
+  }
+
+  .text-login{
+    opacity: 0;
+  }
+
+}

@@ -1,0 +1,11 @@
+.dashboard{
+  display: flex;
+}
+
+.content-sidebar{
+  width: 15%;
+}
+
+.content-dashboard{
+  width: 85%;
+}
