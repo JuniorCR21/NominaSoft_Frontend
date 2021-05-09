@@ -13,7 +13,7 @@ export class RegisterPanelComponent implements OnInit {
   dni:string="";
   date:Date = new Date();
   empleado: Employee = new Employee();
-  encontrado:boolean = true;
+  encontrado:boolean = false;
 
   constructor(private toastr:ToastrService,
               private employeeService:EmployeeService) { }

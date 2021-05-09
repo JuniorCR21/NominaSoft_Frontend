@@ -9,7 +9,7 @@ import { HomePanelComponent } from './pages/home-panel/home-panel.component';
 import { PaymentPanelComponent } from './pages/payment-panel/payment-panel.component';
 import { EmployeePanelComponent } from './pages/employee-panel/employee-panel.component';
 import { EmployeeService } from './shared/services/employee.service';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { EmployeeService } from './shared/services/employee.service';
     DashboardRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers:[
     EmployeeService

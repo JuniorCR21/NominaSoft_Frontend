@@ -16,7 +16,9 @@
           </div>
         </div>
         <div class="col-md-6">
-          <button class="btn btn-primary btn-add"><i class="fas fa-user-plus"></i></button>
+          <button class="btn btn-primary btn-add" (click)="openModal(modalEmpleado)">
+            <i class="fas fa-user-plus"></i>
+          </button>
         </div>
       </div>
       <div class="table-responsive">
@@ -57,3 +59,68 @@
     </div>
   </section>
 </div>
+
+<ng-template #modalEmpleado >
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Formulario Empleado</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="cerrarModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputDni">DNI</label>
+          <input type="text" class="form-control" id="inputDni" placeholder="DNI Empleado">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputNombre">Nombre</label>
+          <input type="text" class="form-control" id="inputNombre" placeholder="Nombres y Apellidos">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputFNacimiento">Fecha de Nacimiento</label>
+          <input type="date" class="form-control" id="inputFNacimiento">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputTelefono">Teléfono</label>
+          <input type="number" class="form-control" id="inputTelefono" placeholder="Teléfono o Celular">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputECivil">Estado Civil</label>
+          <select class="custom-select" id="inputECivil">
+            <option selected>select menu</option>
+            <option value="1">Soltero</option>
+            <option value="2">Casado</option>
+            <option value="3">Conviviente</option>
+            <option value="3">Divorciado</option>
+            <option value="3">Viudo</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputGAcademico">Grado Académico</label>
+          <select class="custom-select" id="inputGAcademico">
+            <option selected>select menu</option>
+            <option value="1">Primaria</option>
+            <option value="2">Secundaria</option>
+            <option value="3">Bachiller</option>
+            <option value="3">Profesional</option>
+            <option value="3">Magister</option>
+            <option value="3">Doctor</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="inputDireccion">Dirección</label>
+          <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary">Guardar Cambios</button>
+      <button class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
+    </div>
+
+</ng-template>
