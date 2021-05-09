@@ -1,0 +1,22 @@
+.container-employee{
+  padding: 2% 4%;
+}
+
+.title{
+  font-weight: bold;
+}
+
+table th{
+  font-size: 16px;
+  font-weight: 700;
+  color: #55626d;
+}
+
+.btn-primary{
+  background-color: #0060FF;
+}
+
+.btn-add{
+  position: absolute;
+  right: 3%;
+}

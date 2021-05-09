@@ -5,3 +5,20 @@
 .title{
   font-weight: bold;
 }
+
+.subtitle{
+  font-style: italic;
+  font-size: 16px;
+  color: #838383;
+}
+
+.title-card-employee{
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.btn{
+  font-weight: bold;
+  font-size: 15px;
+}

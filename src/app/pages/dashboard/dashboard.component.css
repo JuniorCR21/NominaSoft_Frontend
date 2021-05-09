@@ -9,3 +9,8 @@
 .content-dashboard{
   width: 85%;
 }
+
+.content-navbar{
+  z-index: 60;
+}
+

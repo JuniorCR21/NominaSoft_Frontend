@@ -1,0 +1,59 @@
+<div class="container-employee">
+  <section class="banner-home">
+      <h2 class="title">Panel Empleado</h2>
+      <p class="text-secondary">{{date}}</p>
+  </section>
+  <section>
+    <div class="card card-body border-0 shadow mt-4">
+      <!--h5>Lista de Empleados</h5-->
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Ingrese DNI">
+            <div class="input-group-append">
+              <button class="btn btn-secondary "><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-primary btn-add"><i class="fas fa-user-plus"></i></button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">DNI</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Fecha de Nacimiento</th>
+              <th scope="col">Estado Civil</th>
+              <th scope="col">Teléfono</th>
+              <th scope="col">Dirección</th>
+              <th scope="col">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-secondary" *ngFor="let empleado of empleados">
+              <td>{{empleado.id}}</td>
+              <td>{{empleado.dni}}</td>
+              <td>{{empleado.nombre}}</td>
+              <td>{{empleado.fechaNacimiento}}</td>
+              <td>
+                <span class="badge badge-secondary">{{empleado.estadoCivil}}</span>
+              </td>
+              <td>{{empleado.telefono}}</td>
+              <td>{{empleado.direccion}}</td>
+              <td>
+                <div class="btn-group" role="group" >
+                  <button type="button" class="btn btn-sm btn-warning"><i class="fas fa-user-edit"></i></button>
+                  <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
