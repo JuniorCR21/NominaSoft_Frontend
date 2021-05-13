@@ -1,7 +1,7 @@
 <div class="container-employee">
   <section class="banner-home">
       <h2 class="title">Panel Empleado</h2>
-      <p class="text-secondary">{{date}}</p>
+      <p class="text-secondary date">{{date}}</p>
   </section>
   <section>
     <div class="card card-body border-0 shadow mt-4">
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <button class="btn btn-primary btn-add" (click)="openModal(modalEmpleado)">
+          <button class="btn btn-primary btn-add" (click)="openModal(modalEmpleado,empleado)">
             <i class="fas fa-user-plus"></i>
           </button>
         </div>
@@ -30,6 +30,7 @@
               <th scope="col">Nombre</th>
               <th scope="col">Fecha de Nacimiento</th>
               <th scope="col">Estado Civil</th>
+              <th scope="col">Grado Académico</th>
               <th scope="col">Teléfono</th>
               <th scope="col">Dirección</th>
               <th scope="col">Acción</th>
@@ -40,15 +41,16 @@
               <td>{{empleado.id}}</td>
               <td>{{empleado.dni}}</td>
               <td>{{empleado.nombre}}</td>
-              <td>{{empleado.fechaNacimiento}}</td>
+              <td>{{empleado.fechaNacimiento }}</td>
               <td>
                 <span class="badge badge-secondary">{{empleado.estadoCivil}}</span>
               </td>
+              <td>{{empleado.gradoAcademico}}</td>
               <td>{{empleado.telefono}}</td>
               <td>{{empleado.direccion}}</td>
               <td>
                 <div class="btn-group" role="group" >
-                  <button type="button" class="btn btn-sm btn-warning"><i class="fas fa-user-edit"></i></button>
+                  <button type="button" class="btn btn-sm btn-warning" (click)="openModal(modalEmpleado,empleado)"><i class="fas fa-user-edit"></i></button>
                   <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></button>
                 </div>
               </td>
@@ -67,60 +69,69 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+    <form [formGroup]="formGuardarEmpleado">
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group col-md-3">
+          <input type="hidden" formControlName="id">
           <label for="inputDni">DNI</label>
-          <input type="text" class="form-control" id="inputDni" placeholder="DNI Empleado">
+          <input type="number" class="form-control" id="inputDni" formControlName="dni" placeholder="DNI Empleado">
         </div>
         <div class="form-group col-md-6">
           <label for="inputNombre">Nombre</label>
-          <input type="text" class="form-control" id="inputNombre" placeholder="Nombres y Apellidos">
+          <input type="text" class="form-control" id="inputNombre" formControlName="nombre" placeholder="Nombres y Apellidos">
         </div>
         <div class="form-group col-md-3">
           <label for="inputFNacimiento">Fecha de Nacimiento</label>
-          <input type="date" class="form-control" id="inputFNacimiento">
+          <input type="date" class="form-control" id="inputFNacimiento" max="{{inputDate}}" formControlName="fechaNacimiento">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="inputTelefono">Teléfono</label>
-          <input type="number" class="form-control" id="inputTelefono" placeholder="Teléfono o Celular">
+          <input type="number" class="form-control" id="inputTelefono" formControlName="telefono" placeholder="Teléfono o Celular">
         </div>
         <div class="form-group col-md-4">
           <label for="inputECivil">Estado Civil</label>
-          <select class="custom-select" id="inputECivil">
-            <option selected>select menu</option>
-            <option value="1">Soltero</option>
-            <option value="2">Casado</option>
-            <option value="3">Conviviente</option>
-            <option value="3">Divorciado</option>
-            <option value="3">Viudo</option>
+          <select class="custom-select" id="inputECivil" formControlName="estadoCivil">
+            <option value="Soltero">Soltero</option>
+            <option value="Casado">Casado</option>
+            <option value="Conviviente">Conviviente</option>
+            <option value="Divorciado">Divorciado</option>
+            <option value="Viudo">Viudo</option>
           </select>
         </div>
         <div class="form-group col-md-4">
           <label for="inputGAcademico">Grado Académico</label>
-          <select class="custom-select" id="inputGAcademico">
-            <option selected>select menu</option>
-            <option value="1">Primaria</option>
-            <option value="2">Secundaria</option>
-            <option value="3">Bachiller</option>
-            <option value="3">Profesional</option>
-            <option value="3">Magister</option>
-            <option value="3">Doctor</option>
+          <select class="custom-select" id="inputGAcademico" formControlName="gradoAcademico">
+            <option value="Primaria">Primaria</option>
+            <option value="Secundaria">Secundaria</option>
+            <option value="Bachiller">Bachiller</option>
+            <option value="Profesional">Profesional</option>
+            <option value="Magister">Magister</option>
+            <option value="Doctor">Doctor</option>
           </select>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="inputDireccion">Dirección</label>
-          <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
+          <input type="text" class="form-control" id="inputDireccion" formControlName="direccion" placeholder="Dirección">
         </div>
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary">Guardar Cambios</button>
+      <button class="btn btn-primary" role="button" (click)="crearEmpleado()" *ngIf="!formGuardarEmpleado.get('id').value else elseBlock"
+      [disabled]="formGuardarEmpleado.invalid">
+        Guardar Cambios
+      </button>
+      <ng-template #elseBlock>
+        <button role="button" [disabled]="formGuardarEmpleado.invalid" class="btn btn-primary"
+        (click)="editarEmpleado()">
+          Editar Cambios
+        </button>
+      </ng-template>
       <button class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
     </div>
-
+  </form>
 </ng-template>

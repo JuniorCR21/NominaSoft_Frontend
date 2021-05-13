@@ -6,6 +6,10 @@
   font-weight: bold;
 }
 
+.date{
+  text-transform: capitalize;
+}
+
 .subtitle{
   font-style: italic;
   font-size: 16px;

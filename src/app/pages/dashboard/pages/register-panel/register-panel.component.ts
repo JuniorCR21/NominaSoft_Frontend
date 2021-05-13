@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from '../../shared/services/employee.service';
 import { Employee } from '../../shared/models/employee';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-register-panel',
@@ -11,14 +13,17 @@ import { Employee } from '../../shared/models/employee';
 export class RegisterPanelComponent implements OnInit {
 
   dni:string="";
-  date:Date = new Date();
+  date;
   empleado: Employee = new Employee();
   encontrado:boolean = false;
+  modalContrato: BsModalRef;
 
   constructor(private toastr:ToastrService,
+              private modalService: BsModalService,
               private employeeService:EmployeeService) { }
 
   ngOnInit(): void {
+    this.configMoment();
   }
 
   buscarEmpleado(){
@@ -57,6 +62,23 @@ export class RegisterPanelComponent implements OnInit {
         }
       )
     }
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalContrato = this.modalService.show(template,{
+      backdrop: 'static',
+      keyboard: false,
+      class: 'modal-lg'
+    });
+  }
+
+  cerrarModal(){
+    this.modalContrato.hide();
+  }
+
+  configMoment(){
+    moment.locale('es-PE');
+    this.date= moment().format('LLLL');
   }
 
 }

@@ -4,7 +4,8 @@ export class Employee {
   direccion:string
   telefono:string
   fechaNacimiento: Date
-  contrato:any
+  contratos:any
   estadoCivil:string
   dni:number
+  gradoAcademico:string
 }
